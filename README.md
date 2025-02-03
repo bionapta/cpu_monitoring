@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Monitoring Dashboard
+
+This is a web application for monitoring CPU usage and other metrics using InfluxDB and Grafana. The application is built with Next.js, React, TypeScript, Tailwind CSS, and Shadcn/UI.
+
+## Prerequisites
+
+- Node.js
+- InfluxDB
+- Grafana
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/monitoring-dashboard.git
+    cd monitoring-dashboard
+    ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Create a `.env.local` file and add your InfluxDB configuration:
+    ```env
+    INFLUXDB_TOKEN=your-influxdb-token
+    INFLUXDB_URL=http://localhost:8086
+    INFLUXDB_ORG=your-org
+    INFLUXDB_BUCKET=your-bucket
+    ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Run the development server:
+    ```bash
+    npm run dev
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push your code to a GitHub repository.
+2. Go to [Vercel](https://vercel.com/) and create a new project.
+3. Connect your GitHub repository.
+4. Deploy your project.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Structure
+
+cpu_monitoring/
+│
+├── .env.local
+├── components.json
+├── eslint.config.mjs
+├── jest.config.js
+├── jest.setup.js
+├── next.config.ts
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── tailwind.config.ts
+├── tsconfig.json
+├── app/
+│   └── globals.css
+│   └── layout.tsx
+├── components/
+│   └── ui
+│       └── button.tsx
+│       └── card.tsx
+│       └── form.tsx
+│       └── input.tsx
+│       └── label.tsx
+│       └── textarea.tsx
+│   └── Footer.tsx
+│   └── Head.tsx
+│   └── GrafanaEmbed.tsx
+│   └── InfoSection.tsx
+│   └── Navbar.tsx
+│   └── PageTransition.tsx
+├── lib/
+│   └── utils.ts
+├── pages/
+│   └── api
+│       └── influxdb.ts
+├── public/
+    └── images
+        └── spc.png
+
+## License
+
+This project is licensed under the MIT License.
+
+# Monitoring Dashboard Project
+
+## Deskripsi Proyek
+Proyek ini adalah sebuah dashboard monitoring yang menggunakan InfluxDB dan Grafana untuk memantau penggunaan CPU dan temperatur CPU. Dashboard ini menampilkan data dalam bentuk gauge dan grafik, serta menyediakan data mentah dalam format JSON.
+
+## Fitur
+- **Grafana Dashboard**: Menampilkan CPU Load, CPU Temperature dalam bentuk gauge, dan CPU Load dalam bentuk grafik garis.
+- **API untuk Mengirim dan Mengambil Data**: Menggunakan InfluxDB untuk menyimpan dan mengambil data.
+- **Auto Refresh**: Data diperbarui setiap 1 detik.
+
+## Struktur Proyek
+- `components/`: Berisi komponen React yang digunakan dalam proyek.
+  - `GrafanaEmbed.tsx`: Komponen untuk menyematkan dashboard Grafana.
+  - `InfoSection.tsx`: Komponen untuk menampilkan informasi tambahan.
+- `pages/`: Berisi halaman utama proyek.
+  - `index.tsx`: Halaman utama yang menampilkan dashboard dan data CPU.
+- `api/`: Berisi API endpoint untuk mengirim dan mengambil data.
+  - `sendData.ts`: Endpoint untuk mengirim data ke InfluxDB.
+  - `influxdb.ts`: Endpoint untuk mengambil data dari InfluxDB.
+- `app/globals.css`: Berisi gaya global untuk proyek.
+
+## Persyaratan
+- Node.js
+- InfluxDB
+- Grafana
+
+## Cara Menjalankan Proyek
+
+### Instalasi
+Pastikan Anda telah menginstal Node.js di sistem Anda. Kemudian, instal dependensi proyek dengan menjalankan:
+
+```bash
+npm install
