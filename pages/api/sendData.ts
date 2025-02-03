@@ -29,3 +29,11 @@ async function sendData() {
     console.error('Error writing data to InfluxDB', error);
   }
 }
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  await sendData();
+  res.status(200).json({ message: 'Data sent successfully' });
+}
