@@ -9,7 +9,7 @@ const Footer = () => {
           href="https://www.linkedin.com/in/aaptazaimm/"
           className="font-bold footer-credit-animation"
         >
-          Albion Apta Za'im
+          Albion Apta Za&apos;im
         </a>{' '}
         | &copy; 2025 CPU Monitoring
       </div>

@@ -19,25 +19,13 @@ async function sendData() {
   const cpuTemperature = 30 + Math.random() * 70; // Simulasi temperatur CPU (range 30-100)
 
   const point = new Point('cpu')
-    .tag('host', 'host1')
-    .floatField('usage_user', cpuUsage)
+    .floatField('usage', cpuUsage)
     .floatField('temperature', cpuTemperature);
 
-  writeApi.writePoint(point);
-  await writeApi.flush();
-}
-
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === 'POST') {
-    try {
-      await sendData();
-      res.status(200).json({ message: 'Data sent successfully' });
-    } catch (error) {
-      res.status(500).json({ error: 'Failed to send data' });
-    }
-  } else {
-    res.status(405).json({ error: 'Method not allowed' });
+  try {
+    await writeApi.writePoint(point);
+    await writeApi.close();
+  } catch (error) {
+    console.error('Error writing data to InfluxDB', error);
   }
-};
-
-export default handler;
+}
