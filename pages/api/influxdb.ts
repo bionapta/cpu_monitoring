@@ -12,7 +12,7 @@ const bucket = process.env.INFLUXDB_BUCKET || '';
 const client = new InfluxDB({ url, token });
 const queryApi = client.getQueryApi(org);
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const fluxQuery = `
     from(bucket: "${bucket}")
       |> range(start: -1h)
@@ -31,3 +31,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(500).json({ error: (error as Error).message });
   }
 };
+
+export default handler;

@@ -8,6 +8,9 @@ const org = process.env.INFLUXDB_ORG || '';
 const bucket = process.env.INFLUXDB_BUCKET || '';
 
 // init client nya InfluxDB
+if (!url || !token) {
+  throw new Error('INFLUXDB_URL and INFLUXDB_TOKEN must be defined');
+}
 const client = new InfluxDB({ url, token });
 const writeApi = client.getWriteApi(org, bucket, 'ms');
 
@@ -24,15 +27,17 @@ async function sendData() {
   await writeApi.flush();
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     try {
       await sendData();
       res.status(200).json({ message: 'Data sent successfully' });
     } catch (error) {
-      res.status(500).json({ error: (error as Error).message });
+      res.status(500).json({ error: 'Failed to send data' });
     }
   } else {
     res.status(405).json({ error: 'Method not allowed' });
   }
 };
+
+export default handler;
