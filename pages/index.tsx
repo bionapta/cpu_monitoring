@@ -4,9 +4,22 @@ import InfoSection from '../components/InfoSection';
 import MetaHead from '../components/Head';
 import '../app/globals.css';
 
+interface CpuData {
+  // Define the structure of your CPU data here
+  // Example:
+  usage: number;
+  temperature: number;
+}
+
+interface InfluxData {
+  // Define the structure of your InfluxDB data here
+  // Example:
+  measurements: Array<{ time: string; value: number }>;
+}
+
 const Home = () => {
-  const [cpuData, setCpuData] = useState<any | null>(null);
-  const [influxData, setInfluxData] = useState<any | null>(null);
+  const [cpuData, setCpuData] = useState<CpuData | null>(null);
+  const [influxData, setInfluxData] = useState<InfluxData | null>(null);
   const [grafanaUrl, setGrafanaUrl] = useState(
     process.env.NEXT_PUBLIC_GRAFANA_URL || ''
   );
@@ -37,7 +50,7 @@ const Home = () => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.json();
+        const data: CpuData = await response.json();
         setCpuData(data);
       } catch (error) {
         console.error('Error fetching CPU data:', error);
@@ -54,7 +67,7 @@ const Home = () => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.json();
+        const data: InfluxData = await response.json();
         setInfluxData(data);
       } catch (error) {
         console.error('Error fetching InfluxDB data:', error);
