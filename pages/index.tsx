@@ -23,7 +23,7 @@ const Home = () => {
       } catch (error) {
         console.error('Error fetching Grafana URL:', error);
         console.log('Using fallback URL');
-        setGrafanaUrl('http://192.168.3.165:3000/'); // Fallback to your public IP
+        setGrafanaUrl('https://bionapta.grafana.net/'); // Fallback to your public IP
       }
     };
 
@@ -76,12 +76,12 @@ const Home = () => {
           {/* Panel Kiri - Gauge CPU Load dan CPU Temp */}
           <div className="col-span-1 flex flex-col gap-3 rounded-lg shadow-lg">
             <GrafanaEmbed
-              src={`${grafanaUrl}/d-solo/cebqm8gdewk5cd/cpu-monitor?orgId=1&from=1738429200000&to=1738515599999&timezone=browser&refresh=5s&panelId=3&__feature.dashboardSceneSolo`}
+              src={`${grafanaUrl}/d-solo/cebqm8gdewk5cd/cpu-monitor?orgId=1&from=1736134625213&to=1738726625213&timezone=browser&refresh=5s&panelId=3&__feature.dashboardSceneSolo`}
               width="100%"
               height="220"
             />
             <GrafanaEmbed
-              src={`${grafanaUrl}/d-solo/cebqm8gdewk5cd/cpu-monitor?orgId=1&from=1738429200000&to=1738515599999&timezone=browser&refresh=5s&panelId=4&__feature.dashboardSceneSolo`}
+              src={`${grafanaUrl}/d-solo/cebqm8gdewk5cd/cpu-monitor?orgId=1&from=1736134656721&to=1738726656721&timezone=browser&refresh=5s&panelId=4&__feature.dashboardSceneSolo`}
               width="100%"
               height="220"
             />
@@ -90,7 +90,7 @@ const Home = () => {
           {/* Panel Kanan - Grafik Timeseries */}
           <div className="col-span-2 rounded-lg shadow-lg">
             <GrafanaEmbed
-              src={`${grafanaUrl}/d-solo/cebqm8gdewk5cd/cpu-monitor?orgId=1&from=1738429200000&to=1738515599999&timezone=browser&refresh=5s&panelId=1&__feature.dashboardSceneSolo`}
+              src={`${grafanaUrl}/d-solo/cebqm8gdewk5cd/cpu-monitor?orgId=1&from=1736134677520&to=1738726677520&timezone=browser&refresh=5s&panelId=1&__feature.dashboardSceneSolo`}
               width="100%"
               height="450"
             />

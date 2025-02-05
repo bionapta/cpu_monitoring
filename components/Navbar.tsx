@@ -56,7 +56,13 @@ export function Navbar({ className }: React.HTMLAttributes<HTMLElement>) {
         </Link>
         <div className="logo-container">
           <Link href="https://scada.co.id/">
-            <Image src="/images/spc.png" alt="PT SPC Logo" className="h-8" />
+            <Image
+              src="/images/spc.png"
+              alt="PT SPC Logo"
+              width={200}
+              height={100}
+              className="h-8"
+            />
           </Link>
         </div>
         <div className="hidden md:flex items-center gap-4 justify-between">
