@@ -1,123 +1,140 @@
-# Monitoring Dashboard
+# CPU Monitoring Dashboard
 
-This is a web application for monitoring CPU usage and other metrics using InfluxDB and Grafana. The application is built with Next.js, React, TypeScript, Tailwind CSS, and Shadcn/UI.
+## **Deskripsi Proyek**
 
-## Prerequisites
+Proyek ini adalah sebuah dashboard monitoring yang menggunakan **InfluxDB** dan **Grafana** untuk memantau penggunaan CPU dan suhu CPU secara real-time. Dashboard ini menampilkan data dalam bentuk **gauge, grafik garis**, serta menyediakan **API endpoint** untuk pengambilan data mentah dalam format JSON.
 
-- Node.js
-- InfluxDB
-- Grafana
+### **Fitur Utama**
 
-## Getting Started
+- **📊 Grafana Dashboard**: Menampilkan CPU Load dan Temperature dalam bentuk gauge serta grafik garis.
+- **🔗 API untuk Mengambil Data**: Menggunakan **InfluxDB** untuk menyimpan dan mengambil data.
+- **⏳ Auto Refresh**: Data diperbarui setiap 1 detik secara otomatis.
+- **☁️ Menggunakan Cloud InfluxDB & Grafana**: Tidak perlu setup database lokal.
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/monitoring-dashboard.git
-    cd monitoring-dashboard
-    ```
+---
 
-2. Install dependencies:
-    ```bash
-    npm install
-    ```
+## **🚀 Installation & Setup**
 
-3. Create a `.env.local` file and add your InfluxDB configuration:
-    ```env
-    INFLUXDB_TOKEN=your-influxdb-token
-    INFLUXDB_URL=http://localhost:8086
-    INFLUXDB_ORG=your-org
-    INFLUXDB_BUCKET=your-bucket
-    ```
+### **1. Clone Repository**
 
-4. Run the development server:
-    ```bash
-    npm run dev
-    ```
+```sh
+git clone https://github.com/yourusername/cpu_monitoring.git
+cd cpu_monitoring
+```
 
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **2. Install Dependencies**
 
-## Deploy on Vercel
+```sh
+npm install
+```
 
-1. Push your code to a GitHub repository.
-2. Go to [Vercel](https://vercel.com/) and create a new project.
-3. Connect your GitHub repository.
-4. Deploy your project.
+### **3. Konfigurasi .env.local**
 
-## Structure
+Buat file `.env.local` di root project dan isi dengan kredensial InfluxDB Cloud:
 
+```
+INFLUXDB_URL=your_influxdb_url
+INFLUXDB_TOKEN=your_influxdb_token
+INFLUXDB_ORG=your_influxdb_org
+INFLUXDB_BUCKET=your_influxdb_bucket
+```
+
+### **4. Jalankan Aplikasi**
+
+```sh
+npm run dev
+```
+
+Aplikasi akan berjalan di **http://localhost:3000**.
+
+---
+
+## **📡 API Endpoints**
+
+### **1. GET `/api/influxdb`**
+
+Mengambil data CPU usage dari InfluxDB.
+
+#### **Request**
+
+```sh
+GET /api/influxdb
+```
+
+#### **Response**
+
+```json
+[
+  {
+    "result": "_result",
+    "table": 0,
+    "_start": "2025-01-30T17:03:27.000Z",
+    "_stop": "2025-01-31T17:03:27.000Z",
+    "_time": "2025-01-31T16:03:27.000Z",
+    "_value": 0.5,
+    "_field": "usage_user",
+    "_measurement": "cpu",
+    "host": "host1",
+    "cpu": "cpu0"
+  }
+]
+```
+
+---
+
+## **💾 InfluxDB & Grafana Setup**
+
+**1️⃣ Setup InfluxDB Cloud**
+
+- **URL:** [InfluxDB Cloud](https://us-east-1-1.aws.cloud2.influxdata.com/orgs/6ffdac236bb9b962)
+- **Gunakan Telegraf** untuk mengambil data CPU.
+
+**2️⃣ Setup Grafana Dashboard**
+
+- **Dashboard Publik:** [Grafana Dashboard](https://bionapta.grafana.net/public-dashboards/b710af3453fc44a7bc78b861f7edbe58?orgId=1&from=now-30d&to=now&timezone=browser)
+- **Terhubung langsung ke InfluxDB untuk visualisasi data CPU.**
+
+---
+
+## **📂 Struktur Proyek**
+
+```
 cpu_monitoring/
 │
 ├── .env.local
-├── components.json
-├── eslint.config.mjs
-├── jest.config.js
-├── jest.setup.js
-├── next.config.ts
 ├── package.json
-├── postcss.config.js
-├── tailwind.config.js
-├── tailwind.config.ts
 ├── tsconfig.json
-├── app/
-│   └── globals.css
-│   └── layout.tsx
-├── components/
-│   └── ui
-│       └── button.tsx
-│       └── card.tsx
-│       └── form.tsx
-│       └── input.tsx
-│       └── label.tsx
-│       └── textarea.tsx
-│   └── Footer.tsx
-│   └── Head.tsx
-│   └── GrafanaEmbed.tsx
-│   └── InfoSection.tsx
-│   └── Navbar.tsx
-│   └── PageTransition.tsx
-├── lib/
-│   └── utils.ts
+├── tailwind.config.js
+├── next.config.ts
 ├── pages/
-│   └── api
-│       └── influxdb.ts
+│   ├── api/                 # Endpoint untuk mengambil data dari InfluxDB
+│   ├── index.tsx            # Halaman utama dashboard
+│   ├── about.tsx            # Halaman tentang proyek
+│   ├── contact.tsx          # Halaman Contact Us
+├── components/
+│   ├── GrafanaEmbed.tsx     # Komponen untuk menyematkan dashboard Grafana
+│   ├── InfoSection.tsx      # Komponen informasi tambahan
+│   ├── Navbar.tsx           # Navigasi utama
+│   ├── Footer.tsx           # Footer halaman
 ├── public/
-    └── images
-        └── spc.png
+│   ├── images/       # Logo atau gambar tambahan
+└── lib/
+    ├── utils.ts             # Helper functions
+```
 
-## License
+---
 
-This project is licensed under the MIT License.
+## **📜 License**
 
-# Monitoring Dashboard Project
+This project is licensed under the **MIT License**.
 
-## Deskripsi Proyek
-Proyek ini adalah sebuah dashboard monitoring yang menggunakan InfluxDB dan Grafana untuk memantau penggunaan CPU dan temperatur CPU. Dashboard ini menampilkan data dalam bentuk gauge dan grafik, serta menyediakan data mentah dalam format JSON.
+---
 
-## Fitur
-- **Grafana Dashboard**: Menampilkan CPU Load, CPU Temperature dalam bentuk gauge, dan CPU Load dalam bentuk grafik garis.
-- **API untuk Mengirim dan Mengambil Data**: Menggunakan InfluxDB untuk menyimpan dan mengambil data.
-- **Auto Refresh**: Data diperbarui setiap 1 detik.
+### **🔗 Links**
 
-## Struktur Proyek
-- `components/`: Berisi komponen React yang digunakan dalam proyek.
-  - `GrafanaEmbed.tsx`: Komponen untuk menyematkan dashboard Grafana.
-  - `InfoSection.tsx`: Komponen untuk menampilkan informasi tambahan.
-- `pages/`: Berisi halaman utama proyek.
-  - `index.tsx`: Halaman utama yang menampilkan dashboard dan data CPU.
-- `api/`: Berisi API endpoint untuk mengirim dan mengambil data.
-  - `sendData.ts`: Endpoint untuk mengirim data ke InfluxDB.
-  - `influxdb.ts`: Endpoint untuk mengambil data dari InfluxDB.
-- `app/globals.css`: Berisi gaya global untuk proyek.
+- 🌐 **Live Demo:** [https://cpumonitoring-bion.vercel.app/](https://cpumonitoring-bion.vercel.app/)
+- 📊 **Grafana Dashboard:** [https://bionapta.grafana.net](https://bionapta.grafana.net/public-dashboards/b710af3453fc44a7bc78b861f7edbe58?orgId=1&from=now-30d&to=now&timezone=browser)
+- 💾 **InfluxDB Cloud:** [https://us-east-1-1.aws.cloud2.influxdata.com/orgs/6ffdac236bb9b962](https://us-east-1-1.aws.cloud2.influxdata.com/orgs/6ffdac236bb9b962)
+- 💻 **GitHub Repository:** [https://github.com/bionapta/cpu_monitoring](https://github.com/bionapta/cpu_monitoring)
 
-## Persyaratan
-- Node.js
-- InfluxDB
-- Grafana
-
-## Cara Menjalankan Proyek
-
-### Instalasi
-Pastikan Anda telah menginstal Node.js di sistem Anda. Kemudian, instal dependensi proyek dengan menjalankan:
-
-```bash
-npm install
+---

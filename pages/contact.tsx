@@ -11,7 +11,8 @@ const Contact = () => {
     return re.test(String(email).toLowerCase());
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     let valid = true;
     const newErrors = { name: '', email: '', message: '' };
 
@@ -85,7 +86,7 @@ const Contact = () => {
             </div>
             <div className="mb-4">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-gray-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="button"
                 onClick={handleSubmit}
               >

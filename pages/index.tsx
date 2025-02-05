@@ -5,8 +5,8 @@ import MetaHead from '../components/Head';
 import '../app/globals.css';
 
 const Home = () => {
-  const [cpuData, setCpuData] = useState([]);
-  const [influxData, setInfluxData] = useState([]);
+  const [cpuData, setCpuData] = useState<any | null>(null);
+  const [influxData, setInfluxData] = useState<any | null>(null);
   const [grafanaUrl, setGrafanaUrl] = useState(
     process.env.NEXT_PUBLIC_GRAFANA_URL || ''
   );
