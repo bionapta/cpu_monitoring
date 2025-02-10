@@ -89,12 +89,12 @@ const Home = () => {
           {/* Panel Kiri - Gauge CPU Load dan CPU Temp */}
           <div className="col-span-1 flex flex-col gap-3 rounded-lg shadow-lg">
             <GrafanaEmbed
-              src={`${grafanaUrl}/d-solo/cebqm8gdewk5cd/cpu-monitor?orgId=1&from=1736134625213&to=1738726625213&timezone=browser&refresh=5s&panelId=3&__feature.dashboardSceneSolo`}
+              src={`${grafanaUrl}/d-solo/cebqm8gdewk5cd/cpu-and-ram-monitor?orgId=1&from=1739178331834&to=1739178631834&timezone=browser&refresh=5s&showCategory=Graph%20styles&panelId=3&__feature.dashboardSceneSolo`}
               width="100%"
               height="220"
             />
             <GrafanaEmbed
-              src={`${grafanaUrl}/d-solo/cebqm8gdewk5cd/cpu-monitor?orgId=1&from=1736134656721&to=1738726656721&timezone=browser&refresh=5s&panelId=4&__feature.dashboardSceneSolo`}
+              src={`${grafanaUrl}/d-solo/cebqm8gdewk5cd/cpu-and-ram-monitor?orgId=1&from=1739178351024&to=1739178651024&timezone=browser&refresh=5s&showCategory=Graph%20styles&panelId=4&__feature.dashboardSceneSolo`}
               width="100%"
               height="220"
             />
@@ -103,7 +103,7 @@ const Home = () => {
           {/* Panel Kanan - Grafik Timeseries */}
           <div className="col-span-2 rounded-lg shadow-lg">
             <GrafanaEmbed
-              src={`${grafanaUrl}/d-solo/cebqm8gdewk5cd/cpu-monitor?orgId=1&from=1736134677520&to=1738726677520&timezone=browser&refresh=5s&panelId=1&__feature.dashboardSceneSolo`}
+              src={`${grafanaUrl}/d-solo/cebqm8gdewk5cd/cpu-and-ram-monitor?orgId=1&from=1739178286157&to=1739178586157&timezone=browser&refresh=5s&showCategory=Graph%20styles&panelId=1&__feature.dashboardSceneSolo`}
               width="100%"
               height="450"
             />
