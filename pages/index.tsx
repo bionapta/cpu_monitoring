@@ -25,7 +25,6 @@ const Home = () => {
   );
 
   useEffect(() => {
-    // Fetch Grafana URL from environment variable or API
     const fetchGrafanaUrl = async () => {
       console.log('Fetching Grafana URL...');
       try {
@@ -36,7 +35,7 @@ const Home = () => {
       } catch (error) {
         console.error('Error fetching Grafana URL:', error);
         console.log('Using fallback URL');
-        setGrafanaUrl('https://bionapta.grafana.net/'); // Fallback to your public IP
+        setGrafanaUrl('https://bionapta.grafana.net');
       }
     };
 

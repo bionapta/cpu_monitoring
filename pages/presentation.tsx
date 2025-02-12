@@ -94,7 +94,7 @@ const Presentation = () => {
                   Data yang dikumpulkan dari Telegraf dikirim ke InfluxDB,
                   kemudian divisualisasikan menggunakan Grafana Cloud. Hasilnya
                   adalah dashboard real-time yang menampilkan penggunaan CPU,
-                  suhu, dan metrik lainnya secara akurat.
+                  RAM, dan metrik lainnya secara akurat.
                 </p>
               </CardHeader>
             </Card>

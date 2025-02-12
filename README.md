@@ -2,11 +2,11 @@
 
 ## **Deskripsi Proyek**
 
-Proyek ini adalah sebuah dashboard monitoring yang menggunakan **InfluxDB** dan **Grafana** untuk memantau penggunaan CPU dan suhu CPU secara real-time. Dashboard ini menampilkan data dalam bentuk **gauge, grafik garis**, serta menyediakan **API endpoint** untuk pengambilan data mentah dalam format JSON.
+Proyek ini adalah sebuah dashboard monitoring yang menggunakan **InfluxDB** dan **Grafana** untuk memantau penggunaan CPU dan RAM CPU secara real-time. Dashboard ini menampilkan data dalam bentuk **gauge, grafik garis**, serta menyediakan **API endpoint** untuk pengambilan data mentah dalam format JSON.
 
 ### **Fitur Utama**
 
-- **📊 Grafana Dashboard**: Menampilkan CPU Load dan Temperature dalam bentuk gauge serta grafik garis.
+- **📊 Grafana Dashboard**: Menampilkan CPU Load dan RAM Load dalam bentuk gauge serta grafik garis.
 - **🔗 API untuk Mengambil Data**: Menggunakan **InfluxDB** untuk menyimpan dan mengambil data.
 - **⏳ Auto Refresh**: Data diperbarui setiap 1 detik secara otomatis.
 - **☁️ Menggunakan Cloud InfluxDB & Grafana**: Tidak perlu setup database lokal.
@@ -18,7 +18,7 @@ Proyek ini adalah sebuah dashboard monitoring yang menggunakan **InfluxDB** dan 
 ### **1. Clone Repository**
 
 ```sh
-git clone https://github.com/yourusername/cpu_monitoring.git
+git clone https://github.com/bionapta/cpu_monitoring.git
 cd cpu_monitoring
 ```
 
